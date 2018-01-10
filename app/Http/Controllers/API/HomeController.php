@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
-use App\Http\Resources\Activity as ActivityResource;
-use App\Http\Resources\Activities as ActivityCollection;
+use BenbenLand\Contracts\Code;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\ApiController;
 
-class ActivityController extends Controller
+
+class HomeController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::paginate(10);
-        return new ActivityCollection($activities);
+//        echo E_LOGIN_FAILED;
+
+        return $this->apiResponse('操作成功了', Code::R_OK);
     }
 
     /**
@@ -49,8 +50,7 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        $activity = Activity::find($id);
-        return new ActivityResource($activity);
+        //
     }
 
     /**

@@ -26,11 +26,16 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+          "app/Helpers.php",
+          "app/Const.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "BenbenLand\\": "app/BenbenLand/"
         }
     },
     "extra": {

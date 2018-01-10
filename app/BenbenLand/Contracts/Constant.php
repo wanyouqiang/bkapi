@@ -13,6 +13,4 @@ interface Constant
 {
     const PAGE_LIMIT = 2;
 
-
-    const C_CHOICE_SCHOOL = 'choice_school';             // 选择学校对象信息
 }

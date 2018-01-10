@@ -11,4 +11,6 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'API\HomeController@index');
+
+Route::post('/login', 'API\AuthController@login');

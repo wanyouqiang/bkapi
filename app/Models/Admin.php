@@ -37,4 +37,9 @@ class Admin extends Authenticatable
     {
         return self::where('username', $username)->first();
     }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = $password;
+    }
 }

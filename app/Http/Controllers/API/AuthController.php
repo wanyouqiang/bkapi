@@ -2,24 +2,41 @@
 
 namespace App\Http\Controllers\API;
 
+use BenbenLand\Contracts\Code;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+
+class AuthController extends ApiController
 {
     public function login(Request $request)
     {
-        $req = $this->validate($request, [
-            'username' => 'required',
-            'password' => 'required',
+        $validator = \Validator::make($request->all(), [
+            'username' => 'required|exists:admins,username,deleted_at,NULL',
+            'password' => 'required'
+        ], [
+            'username.required' => $this->ruleMsg(Code::E_AUTH_USERNAME_REQUIRED),
+            'username.exists' => $this->ruleMsg(Code::E_AUTH_USERNAME_NOTEXIST),
+            'password.required' => $this->ruleMsg(Code::E_AUTH_PASSWORD_REQUIRED)
         ]);
+
+        $this->validatorErrors($validator);
+
+        $credentials = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+
+        if (!Auth::attempt($credentials)){
+            $this->thrown(Code::E_AUTH_LOGIN_ERROR);
+        }
 
         $client = new Client;
         $response = $client->post(env('APP_URL') . '/oauth/token', [
             'form_params' => [
-                'username' => $req['username'],
-                'password' => $req['password'],
+                'username' => $request->input('username'),
+                'password' => $request->input('password'),
                 'grant_type' => 'password',
                 'client_id' => env('CLIENT_ID'),
                 'client_secret' => env('CLIENT_SECRET'),

@@ -29,11 +29,7 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        },
-        "files": [
-          "app/Helpers.php",
-          "app/Const.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

@@ -22,5 +22,61 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::resource('article', 'ArticleController');
 //Route::resource('product', 'ProductController');
 
+//通用
 $router->get('qiniu/auth', 'QiNiuController@auth');
 $router->any('qiniu/ueditor', 'QiNiuController@ueditor');
+
+$router->get('region/index', 'RegionController@index');
+$router->get('region/get_dist', 'RegionController@getDist');
+$router->get('region/get_city', 'RegionController@getCity');
+$router->get('region/get_province', 'RegionController@getProvince');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

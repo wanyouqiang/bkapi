@@ -10,5 +10,5 @@ return [
     Code::E_AUTH_USERNAME_REQUIRED => '用户名必须',
     Code::E_AUTH_PASSWORD_REQUIRED => '密码必须',
     Code::E_AUTH_USERNAME_NOTEXIST => '用户名不存在',
-    Code::E_AUTH_LOGIN_ERROR => '登录失败',
+    Code::E_AUTH_LOGIN_ERROR => '用户名或密码错误',
 ];

@@ -13,7 +13,7 @@ class AuthController extends ApiController
     public function login(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-            'username' => 'required|exists:admins,username,deleted_at,NULL',
+            'username' => 'required',
             'password' => 'required'
         ], [
             'username.required' => $this->ruleMsg(Code::E_AUTH_USERNAME_REQUIRED),
@@ -44,5 +44,16 @@ class AuthController extends ApiController
         ]);
 
         return $response;
+    }
+
+    public function logout(Request $request)
+    {
+        try {
+            dd($request->user());
+            $request->user()->token()->revoke();
+            return $this->apiResponse('登录已注销', Code::R_OK);
+        } catch (\Exception $e) {
+            return $this->exceptionHander($e);
+        }
     }
 }

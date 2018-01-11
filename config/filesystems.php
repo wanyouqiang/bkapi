@@ -63,6 +63,14 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'qiniu' => [
+            'driver'     => 'qiniu',
+            'access_key' => env('QINIU_ACCESS_KEY', 'WPjkON87p2-IGsfkZVmv9DmD9ietwHTBf5vMFLvk'),
+            'secret_key' => env('QINIU_SECRET_KEY', 'OTfSuogCkk5tom1GwlhgS298VX6MKx8eAfkp81pf'),
+            'bucket'     => env('QINIU_BUCKET', 'mkimg'),
+            'domain'     => env('QINIU_DOMAIN', 'od4w8rjoj.bkt.clouddn.com'), // or host: https://xxxx.clouddn.com
+        ]
+
     ],
 
 ];

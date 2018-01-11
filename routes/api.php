@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::resource('activity', 'ActivityController');
 //Route::resource('article', 'ArticleController');
 //Route::resource('product', 'ProductController');
+
+$router->get('qiniu/auth', 'API\QiNiuController@auth');

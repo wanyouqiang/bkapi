@@ -24,6 +24,47 @@ class QiNiuController extends ApiController
         ]);
     }
 
+    // 百度编辑器上传文件
+    public function ueditor(Request $request)
+    {
 
+        $upload = config('ueditor.upload');
+        $storage = app('ueditor.storage');
+
+        $callback = $request->get('callback');
+
+        switch ($request->get('action')) {
+            case 'config':
+                $result = config('ueditor.upload');
+                break;
+
+            // lists
+            case $upload['imageManagerActionName']:
+                $result = $storage->listFiles(
+                    $upload['imageManagerListPath'],
+                    $request->get('start'),
+                    $request->get('size'),
+                    $upload['imageManagerAllowFiles']);
+                break;
+            case $upload['fileManagerActionName']:
+                $result = $storage->listFiles(
+                    $upload['fileManagerListPath'],
+                    $request->get('start'),
+                    $request->get('size'),
+                    $upload['fileManagerAllowFiles']);
+                break;
+            default:
+                $result = $storage->upload($request);
+                break;
+        }
+        if ($callback) {
+            if (preg_match("/^[\w_]+$/", $callback)) {
+                return htmlspecialchars($callback) . '(' . json_encode($result) . ')';
+            } else {
+                return json_encode(['state'=> 'callback参数不合法']);
+            }
+        }
+        return $result;
+    }
 
 }

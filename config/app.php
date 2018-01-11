@@ -179,6 +179,8 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         // 七牛云
         Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
+        // 百度编辑器
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
 
     ],
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3a638f7f1a0e13798581640fc07ed99",
+    "content-hash": "71dd532d358aa1aae9d4ddadf02c6e1a",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -16,13 +16,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/barryvdh/laravel-cors/zipball/b64caccbfc33b9ee2ba7dcce3307590882ede9ad",
                 "reference": "b64caccbfc33b9ee2ba7dcce3307590882ede9ad",
-=======
-                "url": "https://api.github.com/repos/barryvdh/laravel-cors/zipball/1326460c591e5299d43e266de52a4141c5c66561",
-                "reference": "1326460c591e5299d43e266de52a4141c5c66561",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -302,13 +297,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
                 "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
-=======
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/e11d84c6e018beedd929cff5220969a3c6d1d462",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -901,13 +891,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/laravel/framework/zipball/cfafae1f2043208390a7c984e3070696f4969605",
                 "reference": "cfafae1f2043208390a7c984e3070696f4969605",
-=======
-                "url": "https://api.github.com/repos/laravel/framework/zipball/cb8ec95aa65fbaeeaf94026c8a9f04bb97c13777",
-                "reference": "cb8ec95aa65fbaeeaf94026c8a9f04bb97c13777",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1109,13 +1094,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/laravel/tinker/zipball/852c2abe0b0991555a403f1c0583e64de6acb4a6",
                 "reference": "852c2abe0b0991555a403f1c0583e64de6acb4a6",
-=======
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/203978fd67f118902acff95925847e70b72e3daf",
-                "reference": "203978fd67f118902acff95925847e70b72e3daf",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1368,13 +1348,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/a0cabb573c7cd5ee01803daec992d6ee3677c4ae",
                 "reference": "a0cabb573c7cd5ee01803daec992d6ee3677c4ae",
-=======
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/925776958fc3f5278e74363663c20147af32b668",
-                "reference": "925776958fc3f5278e74363663c20147af32b668",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1616,13 +1591,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/579f4ce846734a1cf55d6a531d00ca07a43e3cda",
                 "reference": "579f4ce846734a1cf55d6a531d00ca07a43e3cda",
-=======
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/08131e7ff29de6bb9f12275c7d35df71f25f4d89",
-                "reference": "08131e7ff29de6bb9f12275c7d35df71f25f4d89",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1749,6 +1719,52 @@
             ],
             "description": "A Qiniu storage filesystem for Laravel.",
             "time": "2017-11-29T06:55:32+00:00"
+        },
+        {
+            "name": "overtrue/laravel-ueditor",
+            "version": "1.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/laravel-ueditor.git",
+                "reference": "ac7e860778d66f00f7f47990ee4ad827e78b45ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overtrue/laravel-ueditor/zipball/ac7e860778d66f00f7f47990ee4ad827e78b45ef",
+                "reference": "ac7e860778d66f00f7f47990ee4ad827e78b45ef",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "overtrue/laravel-filesystem-qiniu": "如果你想要使用七牛云存储，也许你需要安装它哦~"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Overtrue\\LaravelUEditor\\UEditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\LaravelUEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "anzhengchao@gmail.com"
+                }
+            ],
+            "description": "UEditor integration for Laravel.",
+            "time": "2017-09-24T02:23:11+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2094,13 +2110,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/bobthecow/psysh/zipball/5069b70e8c4ea492c2b5939b6eddc78bfe41cfec",
                 "reference": "5069b70e8c4ea492c2b5939b6eddc78bfe41cfec",
-=======
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/b1d289c2cb03a2f8249912c53e96ced38f879926",
-                "reference": "b1d289c2cb03a2f8249912c53e96ced38f879926",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2359,13 +2370,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/class-loader/zipball/e63c12699822bb3b667e7216ba07fbcc3a3e203e",
                 "reference": "e63c12699822bb3b667e7216ba07fbcc3a3e203e",
-=======
-                "url": "https://api.github.com/repos/symfony/class-loader/zipball/e8d36a7b5568d232f5c3f8ef92665836b9f1e038",
-                "reference": "e8d36a7b5568d232f5c3f8ef92665836b9f1e038",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2420,13 +2426,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/console/zipball/8394c8ef121949e8f858f13bc1e34f05169e4e7d",
                 "reference": "8394c8ef121949e8f858f13bc1e34f05169e4e7d",
-=======
-                "url": "https://api.github.com/repos/symfony/console/zipball/2cdef78de8f54f68ff16a857e710e7302b47d4c7",
-                "reference": "2cdef78de8f54f68ff16a857e710e7302b47d4c7",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2494,13 +2495,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/e66394bc7610e69279bfdb3ab11b4fe65403f556",
                 "reference": "e66394bc7610e69279bfdb3ab11b4fe65403f556",
-=======
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/7134b93e90ea7e7881fcb2da006d21b4c5f31908",
-                "reference": "7134b93e90ea7e7881fcb2da006d21b4c5f31908",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2552,13 +2548,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/debug/zipball/603b95dda8b00020e4e6e60dc906e7b715b1c245",
                 "reference": "603b95dda8b00020e4e6e60dc906e7b715b1c245",
-=======
-                "url": "https://api.github.com/repos/symfony/debug/zipball/fb2001e5d85f95d8b6ab94ae3be5d2672df128fd",
-                "reference": "fb2001e5d85f95d8b6ab94ae3be5d2672df128fd",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2613,13 +2604,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/74d33aac36208c4d6757807d9f598f0133a3a4eb",
                 "reference": "74d33aac36208c4d6757807d9f598f0133a3a4eb",
-=======
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/6223fb2b68e7059e8d5843c0103999a84e7275cf",
-                "reference": "6223fb2b68e7059e8d5843c0103999a84e7275cf",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2681,13 +2667,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/finder/zipball/613e26310776f49a1773b6737c6bd554b8bc8c6f",
                 "reference": "613e26310776f49a1773b6737c6bd554b8bc8c6f",
-=======
-                "url": "https://api.github.com/repos/symfony/finder/zipball/dac8d7db537bac7ad8143eb11360a8c2231f251a",
-                "reference": "dac8d7db537bac7ad8143eb11360a8c2231f251a",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2735,13 +2716,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/http-foundation/zipball/4a213be1cc8598089b8c7451529a2927b49b5d26",
                 "reference": "4a213be1cc8598089b8c7451529a2927b49b5d26",
-=======
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/d9625c8abb907e0ca2d7506afd7a719a572c766f",
-                "reference": "d9625c8abb907e0ca2d7506afd7a719a572c766f",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2794,13 +2770,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/http-kernel/zipball/1c2a82d6a8ec9b354fe4ef48ad1ad3f1a4f7db0e",
                 "reference": "1c2a82d6a8ec9b354fe4ef48ad1ad3f1a4f7db0e",
-=======
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/b101bb29071163563d4c8b537b35845eaf909235",
-                "reference": "b101bb29071163563d4c8b537b35845eaf909235",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -3005,13 +2976,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/process/zipball/ff69f110c6b33fd33cd2089ba97d6112f44ef0ba",
                 "reference": "ff69f110c6b33fd33cd2089ba97d6112f44ef0ba",
-=======
-                "url": "https://api.github.com/repos/symfony/process/zipball/db25e810fd5e124085e3777257d0cf4ae533d0ea",
-                "reference": "db25e810fd5e124085e3777257d0cf4ae533d0ea",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -3059,13 +3025,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/c2b757934f2d9681a287e662efbc27c41fe8ef86",
                 "reference": "c2b757934f2d9681a287e662efbc27c41fe8ef86",
-=======
-                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/b2098405d8644f6dc4c36febcee6a77c0fdecdff",
-                "reference": "b2098405d8644f6dc4c36febcee6a77c0fdecdff",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -3124,13 +3085,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/routing/zipball/e2b6d6fe7b090c7af720b75c7722c6dfa7a52658",
                 "reference": "e2b6d6fe7b090c7af720b75c7722c6dfa7a52658",
-=======
-                "url": "https://api.github.com/repos/symfony/routing/zipball/d768aa5b25d98188bae3fe4ce3eb2924c97aafac",
-                "reference": "d768aa5b25d98188bae3fe4ce3eb2924c97aafac",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -3207,13 +3163,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/translation/zipball/17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a",
                 "reference": "17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a",
-=======
-                "url": "https://api.github.com/repos/symfony/translation/zipball/e05b0a5996ad7a35ba3a19ffad8b72c9daa64dfa",
-                "reference": "e05b0a5996ad7a35ba3a19ffad8b72c9daa64dfa",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -3280,13 +3231,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/symfony/var-dumper/zipball/545be7e78ccbec43e599f10ff7500d0b09eda9d0",
                 "reference": "545be7e78ccbec43e599f10ff7500d0b09eda9d0",
-=======
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/ec650a975a8e04e0c114d35eab732981243db3a2",
-                "reference": "ec650a975a8e04e0c114d35eab732981243db3a2",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -3451,13 +3397,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< Updated upstream
                 "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/ed6ce7e2105c400ca10277643a8327957c0384b7",
                 "reference": "ed6ce7e2105c400ca10277643a8327957c0384b7",
-=======
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/c8664b92a6d5bc229e48b0923486c097e45a7877",
-                "reference": "c8664b92a6d5bc229e48b0923486c097e45a7877",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {

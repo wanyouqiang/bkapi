@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use BenbenLand\Services\HandleService as Handle;
 
 class Handler extends ExceptionHandler
 {
@@ -48,6 +49,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return parent::render($request, $exception);
+        } elseif ($exception instanceof AuthenticationException) {
+            return Handle::exception($exception, 401);
+        } elseif ($exception instanceof UnauthorizedHttpException) {
+            return Handle::exception($exception, 401);
+        } else {
+            if ($request->is('api/*')) {
+                return Handle::exception($exception);
+            }
+        }
+
         return parent::render($request, $exception);
     }
 }

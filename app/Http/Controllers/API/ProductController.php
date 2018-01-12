@@ -96,8 +96,21 @@ class ProductController extends ApiController
             'price' => "required",
             'price_express' => "required",
         ], [
-            'category_id.required' => $this->ruleMsg(Code::E_PRODUCT_CATEGORY_EMPYT),
+            'category_id.required' => $this->ruleMsg(Code::E_PRODUCT_CATEGORY_ID_EMPYT),
+            'location_id.required' => $this->ruleMsg(Code::E_PRODUCT_LOCATION_ID_EMPYT),
+            'brand_id.required' => $this->ruleMsg(Code::E_PRODUCT_BRAND_ID_EMPYT),
+            'thumbnail.required' => $this->ruleMsg(Code::E_PRODUCT_THUMBNAIL_EMPYT),
+            'title.required' => $this->ruleMsg(Code::E_PRODUCT_TITLE_EMPYT),
+            'sub_title.required' => $this->ruleMsg(Code::E_PRODUCT_SUB_TITLE_EMPYT),
+            'keywords.required' => $this->ruleMsg(Code::E_PRODUCT_KEYWORDS_EMPYT),
+            'description.required' => $this->ruleMsg(Code::E_PRODUCT_DESCRIPTION_EMPYT),
+            'price_origin.required' => $this->ruleMsg(Code::E_PRODUCT_PRICE_ORIGIN_EMPYT),
+            'price.required' => $this->ruleMsg(Code::E_PRODUCT_PRICE_EMPYT),
+            'price_express.required' => $this->ruleMsg(Code::E_PRODUCT_PRICE_EXPRESS_EMPYT),
         ]);
+
+        $this->validatorErrors($validator);
+
     }
 
     /**

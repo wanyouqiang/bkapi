@@ -9,6 +9,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use BenbenLand\Services\HandleService as Handle;
 use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -55,13 +56,15 @@ class Handler extends ExceptionHandler
     {
         if ($request->is('api/*')) {
             // 如果是api请求
-            if ($exception instanceof ModelNotFoundException) {
-                // 如果请求的资源不存在
+            if ($exception instanceof ModelNotFoundException
+                || $exception instanceof NotFoundHttpException) {
+                // 如果请求的资源不存在（例如文章没或者没有这个页面）
                 return Handle::exception($exception, 404);
             } elseif ($exception instanceof AuthenticationException) {
                 // 如果没有权限
                 return Handle::exception($exception, 401);
             } else {
+                // 其他抛出的错误
                 return Handle::exception($exception);
             }
         }

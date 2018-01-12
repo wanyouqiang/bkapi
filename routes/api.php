@@ -43,6 +43,7 @@ $router->get('region/get_province', 'RegionController@getProvince');
 //商品相关
 $router->resource('product/products', 'ProductController');
 $router->resource('product/categorys', 'ProductCategoriesController');
+$router->resource('product/tags', 'ProductTagController');
 
 
 

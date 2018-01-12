@@ -81,4 +81,14 @@ class HandleService
         }
     }
 
+    /**
+     * 格式化金钱输出
+     *
+     * @param $price
+     * @return string
+     */
+    public static function priceFormat($price)
+    {
+        return bcdiv(bcmul($price, 100, 0), 100, 2);
+    }
 }

@@ -57,7 +57,6 @@ class ArticleController extends ApiController
                 'title' => $article->title,
                 'category' => $article->articleCate->title,
                 'article_url' => sprintf(config('flybaby.article_url_tpl'), $article->id),
-                'preview_url' => $previewToken,
                 'preview_url' => sprintf(config('flybaby.article_url_tpl'), $article->id) . '?pt=' . $previewToken,
                 'thumbnail' => $article->thumbnail,
                 'fake_views' => $article->fake_views,

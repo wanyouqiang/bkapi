@@ -58,26 +58,28 @@ class HandleService
      */
     public static function exception(\Exception $exception, $statusCode = 500)
     {
-        $statusCode = 500 !== $statusCode ? $statusCode :$exception->getCode();
         switch ($statusCode) {
             case 404:
+                $errorCode = 404;
                 $message = 'Not found';
                 break;
             case 401:
+                $errorCode = 401;
                 $message = 'Unauthorized.';
                 break;
             default:
+                $errorCode = $exception->getCode();
                 $message = $exception->getMessage();
         }
 
         if ('production' != getenv('APP_ENV')) {
-            return Util::response($message, $statusCode, [
+            return Util::response($message, $errorCode, [
                 'line' => $exception->getLine(),
                 'errors' => $exception->getMessage(),
                 'file' => $exception->getFile()
             ])->setStatusCode($statusCode);
         } else {
-            return Util::response($message, $statusCode)->setStatusCode($statusCode);
+            return Util::response($message, $errorCode)->setStatusCode($statusCode);
         }
     }
 

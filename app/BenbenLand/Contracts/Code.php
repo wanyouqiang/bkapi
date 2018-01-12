@@ -23,6 +23,17 @@ interface Code
     const E_ARTICLE_CATE_ISINT = 2002;
 
     // 商品
-    const E_PRODUCT_CATEGORY_EMPYT = 3001;
+    const E_PRODUCT_CATEGORY_ID_EMPYT = 3001; //商品分类id不能为空
+    const E_PRODUCT_LOCATION_ID_EMPYT = 3002; //国家id不能为空
+    const E_PRODUCT_BRAND_ID_EMPYT = 3003; //品牌id不能为空
+    const E_PRODUCT_THUMBNAIL_EMPYT = 3004; //缩略图不能为空
+    const E_PRODUCT_TITLE_EMPYT = 3005; //标题不能为空
+    const E_PRODUCT_SUB_TITLE_EMPYT = 3006; //副标题不能为空
+    const E_PRODUCT_KEYWORDS_EMPYT = 3007; //关键词不能为空
+    const E_PRODUCT_DESCRIPTION_EMPYT = 3008; //商品详情不能为空
+    const E_PRODUCT_PRICE_ORIGIN_EMPYT = 3009; //商品原价不能为空
+    const E_PRODUCT_PRICE_EMPYT = 3010; //商品现价不能为空
+    const E_PRODUCT_PRICE_EXPRESS_EMPYT = 3011; //商品邮费不能为空
+
 
 }

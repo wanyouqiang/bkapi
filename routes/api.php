@@ -25,6 +25,11 @@ Route::post('auth/logout', ['middleware' => 'auth:api', 'uses' => 'AuthControlle
 //Route::resource('article', 'ArticleController');
 //Route::resource('product', 'ProductController');
 
+// 文章
+Route::get('article/cates', 'ArticleCateController@getAll');
+Route::get('article/tags', 'ArticleTagController@getAll');
+Route::get('article/articles', 'ArticleController@getAll');
+
 //通用
 $router->get('qiniu/auth', 'QiNiuController@auth');
 $router->any('qiniu/ueditor', 'QiNiuController@ueditor');

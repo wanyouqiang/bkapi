@@ -49,7 +49,6 @@ class AuthController extends ApiController
     public function logout(Request $request)
     {
         try {
-            dd($request->user());
             $request->user()->token()->revoke();
             return $this->apiResponse('登录已注销', Code::R_OK);
         } catch (\Exception $e) {

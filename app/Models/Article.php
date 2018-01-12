@@ -6,13 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    public function category()
+    public function articleCate()
     {
-        return $this->hasOne(Article::class, 'id', 'category_id');
+        return $this->belongsTo('App\Models\ArticleCategory', 'category_id');
     }
 
-    public function user()
-    {
-        return $this->hasOne(User::class, 'id', 'user_id');
-    }
+
 }

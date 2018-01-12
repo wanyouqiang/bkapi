@@ -18,9 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-//Route::resource('activity', 'ActivityController');
-//Route::resource('article', 'ArticleController');
-//Route::resource('product', 'ProductController');
+
+// auth
+
+
+
+Route::post('auth/logout', ['middleware' => 'auth:api', 'uses' => 'AuthController@logout']);
+
+
+// 文章
+Route::get('article/cates', 'ArticleCateController@getAll');
+Route::get('article/tags', 'ArticleTagController@getAll');
+Route::get('article/articles', 'ArticleController@getAll');
 
 //通用
 $router->get('qiniu/auth', 'QiNiuController@auth');
@@ -33,7 +42,6 @@ $router->get('region/get_province', 'RegionController@getProvince');
 
 //商品相关
 $router->resource('product/products', 'ProductController');
-
 
 
 

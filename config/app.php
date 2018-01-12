@@ -185,6 +185,8 @@ return [
         Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
         // 百度编辑器
         Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+        // IDE
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 

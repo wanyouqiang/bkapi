@@ -22,6 +22,7 @@ interface Code
     const E_ARTICLE_CATE_DELETE_ID = 2001;
     const E_ARTICLE_CATE_ISINT = 2002;
 
-
+    // 商品
+    const E_PRODUCT_CATEGORY_EMPYT = 3001;
 
 }

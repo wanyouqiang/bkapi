@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use BenbenLand\Services\UtilService;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use BenbenLand\Contracts\Code;
@@ -42,14 +43,15 @@ class ProductController extends ApiController
                 'id' => $v->id,
                 'title' => $v->title,
                 'thumbnail' => $v->thumbnail,
-                'price' => $v->price,
-                'price_origin' => $v->price_origin,
+                'price' => UtilService::priceFormat($v->price),
+                'price_origin' => UtilService::priceFormat($v->price_origin),
                 'storage' => $v->storage,
                 'sale_min' => $v->sale_min,
                 'is_down' => $v->is_down,
                 'category_name' => $v->category->title ?? '',
                 'tags' => $v->tags->pluck('tag')->toArray() ?? [],
                 'brand' => $v->brand->title ?? '',
+                'preview_url' => sprintf(config("flybaby.product_url_tpl"), $v->id),
             ];
         }
 
@@ -81,7 +83,21 @@ class ProductController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'category_id' => "required",
+            'location_id' => "required",
+            'brand_id' => "required",
+            'thumbnail' => "required",
+            'title' => "required",
+            'sub_title' => "required",
+            'keywords' => "required",
+            'description' => "required",
+            'price_origin' => "required",
+            'price' => "required",
+            'price_express' => "required",
+        ], [
+            'category_id.required' => $this->ruleMsg(Code::E_PRODUCT_CATEGORY_EMPYT),
+        ]);
     }
 
     /**

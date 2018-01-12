@@ -52,7 +52,11 @@ class ArticleController extends ApiController
                 'article_id' => $article->id,
                 'title' => $article->title,
                 'category' => $article->articleCate->title,
-                'article_url' => sprintf(config('flybaby.article_url_tpl'), $article->id)
+                'article_url' => sprintf(config('flybaby.article_url_tpl'), $article->id),
+                'thumbnail' => $article->thumbnail,
+                'fake_views' => $article->fake_views,
+                'real_views' => $article->real_views,
+                'published_at' => $article->published_at,
             ];
         }
 

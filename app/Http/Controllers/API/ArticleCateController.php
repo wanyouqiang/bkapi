@@ -13,7 +13,7 @@ class ArticleCateController extends ApiController
      * 获取文章分类列表
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getAll(Request $request)
+    public function index(Request $request)
     {
         $articleCategories = ArticleCategory::all();
 

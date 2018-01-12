@@ -27,9 +27,10 @@ Route::post('auth/logout', ['middleware' => 'auth:api', 'uses' => 'AuthControlle
 
 
 // 文章
-Route::get('article/cates', 'ArticleCateController@getAll');
-Route::get('article/tags', 'ArticleTagController@getAll');
-Route::get('article/articles', 'ArticleController@getAll');
+Route::get('article/cates', 'ArticleCateController@index');
+Route::get('article/tags', 'ArticleTagController@index');
+Route::get('article/articles', 'ArticleController@index');
+Route::delete('article/articles/{articleId}', 'ArticleController@delete');
 
 //通用
 $router->get('qiniu/auth', 'QiNiuController@auth');

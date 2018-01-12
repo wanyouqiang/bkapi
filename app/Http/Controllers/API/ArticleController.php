@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 
 class ArticleController extends ApiController
 {
-    const PER_PAGE = 4;
-    public function getAll(Request $request)
+    const PER_PAGE = 15;
+    public function index(Request $request)
     {
         $category_id = $request->input('category_id');
         $tag_id = $request->input('tag_id');
@@ -52,10 +52,21 @@ class ArticleController extends ApiController
                 'article_id' => $article->id,
                 'title' => $article->title,
                 'category' => $article->articleCate->title,
-                'article_url' => sprintf(config('flybaby.article_url_tpl'), $article->id)
+                'article_url' => sprintf(config('flybaby.article_url_tpl'), $article->id),
+                'thumbnail' => $article->thumbnail,
+                'fake_views' => $article->fake_views,
+                'real_views' => $article->real_views,
+                'published_at' => $article->published_at,
             ];
         }
 
         return $this->apiResponse('ok', Code::R_OK, $data);
+    }
+
+    public function delete($articleId)
+    {
+        Article::destroy($articleId);
+
+        return $this->apiResponse('删除成功', Code::R_OK, []);
     }
 }

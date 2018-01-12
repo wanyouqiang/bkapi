@@ -65,9 +65,42 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace . '\API')
-             ->group(base_path('routes/api.php'));
+//        Route::prefix('api')
+//             ->middleware('api')
+//             ->namespace($this->namespace . '\API')
+//             ->group(base_path('routes/api.php'));
+
+
+        Route::group([
+            'middleware' => ['api'],
+        ], function () {
+
+            // 鉴权
+            Route::group([
+                'namespace' => $this->namespace . '\API',
+                'prefix' => 'api'
+            ], function($router) {
+                require  base_path('routes/api.auth.php');
+            });
+
+
+            // 此分组下的路由皆会被权限管理
+            Route::group([
+                'middleware' => 'auth:api'
+            ], function () {
+                // 这个分组比较屌，属于根分组，应该是放一些没有具体类型的功能
+                Route::group([
+                    'namespace' => $this->namespace . '\API',
+                    'prefix' => 'api'
+                ], function ($router) {
+                    require base_path('routes/api.php');
+                });
+
+
+
+            });
+
+        });
+
     }
 }

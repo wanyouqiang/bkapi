@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| 本文档所有接口都需要身份验证
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -43,7 +43,8 @@ $router->get('region/get_province', 'RegionController@getProvince');
 
 //商品相关
 $router->resource('product/products', 'ProductController');
-
+$router->resource('product/categorys', 'ProductCategoriesController');
+$router->resource('product/tags', 'ProductTagController');
 
 
 

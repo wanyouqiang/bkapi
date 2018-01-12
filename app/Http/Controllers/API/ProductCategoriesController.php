@@ -2,19 +2,35 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\ProductCategory;
+use BenbenLand\Contracts\Code;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductCategoriesController extends Controller
+class ProductCategoriesController extends ApiController
 {
     /**
-     * Display a listing of the resource.
+     * 商品分类列表，不分页
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $categorys = ProductCategory::get();
+
+        $rows = [];
+        foreach ($categorys as $k => $v) {
+            $rows[] = [
+                'id' => $v->id,
+                'title' => $v->title,
+            ];
+        }
+
+        $data = [
+            'rows' => $rows,
+        ];
+
+        return $this->apiResponse('请求成功！', Code::R_OK, $data);
     }
 
     /**
@@ -30,7 +46,7 @@ class ProductCategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +57,7 @@ class ProductCategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,7 +68,7 @@ class ProductCategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -63,8 +79,8 @@ class ProductCategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,7 +91,7 @@ class ProductCategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

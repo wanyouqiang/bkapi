@@ -17,13 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
 // auth
-Route::post('auth/login', 'AuthController@login');
+
+
+
 Route::post('auth/logout', ['middleware' => 'auth:api', 'uses' => 'AuthController@logout']);
 
-//Route::resource('activity', 'ActivityController');
-//Route::resource('article', 'ArticleController');
-//Route::resource('product', 'ProductController');
 
 // 文章
 Route::get('article/cates', 'ArticleCateController@getAll');
@@ -41,7 +42,6 @@ $router->get('region/get_province', 'RegionController@getProvince');
 
 //商品相关
 $router->resource('product/products', 'ProductController');
-
 
 
 

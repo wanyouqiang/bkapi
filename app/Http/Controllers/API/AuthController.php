@@ -33,13 +33,13 @@ class AuthController extends ApiController
         }
 
         $client = new Client;
-        $response = $client->post(env('APP_URL') . '/oauth/token', [
+        $response = $client->post(config('app.url') . '/oauth/token', [
             'form_params' => [
                 'username' => $request->input('username'),
                 'password' => $request->input('password'),
                 'grant_type' => 'password',
-                'client_id' => env('CLIENT_ID'),
-                'client_secret' => env('CLIENT_SECRET'),
+                'client_id' => config('app.api_client_id'),
+                'client_secret' => config('app.api_client_secret'),
             ]
         ]);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use BenbenLand\Services\UtilService;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use BenbenLand\Contracts\Code;
@@ -104,17 +105,17 @@ class ProductController extends ApiController
             "sub_title" => $product->sub_title,
             "keywords" => $product->keywords,
             "description" => $product->description,
-            "price_origin" => $product->price_origin,
-            "price" => $product->price,
-            "price_express" => $product->price_express,
+            "price_origin" => UtilService::priceFormat($product->price_origin),
+            "price" => UtilService::priceFormat($product->price),
+            "price_express" => UtilService::priceFormat($product->price_express),
             "point_max" => $product->point_max,
             "sale_min" => $product->sale_min,
-            "sale_max" => $product->sale_max,
+            "sale_max" => $product->sale_idmax,
             "storage" => $product->storage,
             "unit" => $product->unit,
             "weight" => $product->weight,
             "is_down" => $product->is_down,
-            "tags" => $product->tags->pluck("tag")->toArray() ?? '',
+            "tags" => $product->tags->pluck("id")->toArray() ?? '',
         ];
 
         return $this->apiResponse('请求成功！', Code::R_OK, $data);

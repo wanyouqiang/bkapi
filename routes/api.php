@@ -44,6 +44,7 @@ $router->get('region/get_province', 'RegionController@getProvince');
 $router->resource('product/products', 'ProductController');
 $router->resource('product/categorys', 'ProductCategoriesController');
 $router->resource('product/tags', 'ProductTagController');
+$router->resource('product/brands', 'ProductBrandController');
 
 
 

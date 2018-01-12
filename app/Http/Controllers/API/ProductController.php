@@ -91,7 +91,9 @@ class ProductController extends ApiController
      */
     public function show($id)
     {
-        //
+        $product = Product::with('brand')
+            ->find($id);
+        dd($product);
     }
 
     /**

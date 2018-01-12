@@ -55,14 +55,14 @@ class ProductTagController extends ApiController
     }
 
     /**
-     * Display the specified resource.
+     * 商品详情
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

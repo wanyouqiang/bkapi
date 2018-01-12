@@ -18,7 +18,6 @@ class ProductBrandController extends ApiController
     {
         $brands = ProductBrand::get();
 
-//        dd($brands);
         $rows = [];
         foreach ($brands as $k => $v) {
             $rows[] = [

@@ -91,9 +91,33 @@ class ProductController extends ApiController
      */
     public function show($id)
     {
-        $product = Product::with('brand')
-            ->find($id);
-        dd($product);
+
+        $product = Product::with('tags')->findOrFail($id);
+
+        $data = [
+            "id" => $product->id,
+            "category_id" => $product->category_id,
+            "location_id" => $product->location_id,
+            "brand_id" => $product->brand_id,
+            "thumbnail" => $product->thumbnail,
+            "title" => $product->title,
+            "sub_title" => $product->sub_title,
+            "keywords" => $product->keywords,
+            "description" => $product->description,
+            "price_origin" => $product->price_origin,
+            "price" => $product->price,
+            "price_express" => $product->price_express,
+            "point_max" => $product->point_max,
+            "sale_min" => $product->sale_min,
+            "sale_max" => $product->sale_max,
+            "storage" => $product->storage,
+            "unit" => $product->unit,
+            "weight" => $product->weight,
+            "is_down" => $product->is_down,
+            "tags" => $product->tags->pluck("tag")->toArray() ?? '',
+        ];
+
+        return $this->apiResponse('请求成功！', Code::R_OK, $data);
     }
 
     /**

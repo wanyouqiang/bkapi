@@ -3,8 +3,12 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use BenbenLand\Services\HandleService as Handle;
+use Illuminate\Validation\UnauthorizedException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -49,14 +53,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof MethodNotAllowedHttpException) {
-            return parent::render($request, $exception);
-        } elseif ($exception instanceof AuthenticationException) {
-            return Handle::exception($exception, 401);
-        } elseif ($exception instanceof UnauthorizedHttpException) {
-            return Handle::exception($exception, 401);
-        } else {
-            if ($request->is('api/*')) {
+        if ($request->is('api/*')) {
+            if ($exception instanceof ModelNotFoundException) {
+                return Handle::exception($exception, 404);
+            } elseif ($exception instanceof AuthenticationException) {
+                return Handle::exception($exception, 401);
+            } else {
                 return Handle::exception($exception);
             }
         }

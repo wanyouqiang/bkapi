@@ -2,19 +2,38 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\ProductBrand;
+use BenbenLand\Contracts\Code;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductBrandController extends Controller
+class ProductBrandController extends ApiController
 {
     /**
-     * Display a listing of the resource.
+     * 商品品牌列表
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $brands = ProductBrand::get();
+
+//        dd($brands);
+        $rows = [];
+        foreach ($brands as $k => $v) {
+            $rows[] = [
+                'id' => $v->id,
+                'logo' => $v->logo,
+                'title' => $v->title,
+                'description' => $v->description,
+            ];
+        }
+
+        $data = [
+            'rows' => $rows,
+        ];
+
+        return $this->apiResponse('请求成功！', Code::R_OK, $data);
     }
 
     /**

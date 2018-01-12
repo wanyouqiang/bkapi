@@ -33,8 +33,8 @@ $router->get('region/get_dist', 'RegionController@getDist');
 $router->get('region/get_city', 'RegionController@getCity');
 $router->get('region/get_province', 'RegionController@getProvince');
 
-
-
+//商品相关
+$router->resource('product/products', 'ProductController');
 
 
 

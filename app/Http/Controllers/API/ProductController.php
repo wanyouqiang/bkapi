@@ -18,26 +18,26 @@ class ProductController extends ApiController
     {
         $products = Product::with('category', 'tags', 'brand')
             ->orderBy('updated_at', 'desc')
-            ->where(function($query) use($request){
+            ->where(function ($query) use ($request) {
                 if (!empty($request->title)) {
-                    $query->where('title','like','%' . $request->title . '%');
+                    $query->where('title', 'like', '%' . $request->title . '%');
                 }
             })
-            ->where(function($query) use($request){
+            ->where(function ($query) use ($request) {
                 if (!empty($request->category_id)) {
-                    $query->where('category_id','=', $request->category_id);
+                    $query->where('category_id', '=', $request->category_id);
                 }
             })
-            ->whereHas('tags', function ($query) use($request){
+            ->whereHas('tags', function ($query) use ($request) {
                 if (!empty($request->tag_id)) {
-                    $query->where('tag_id','=', $request->tag_id);
+                    $query->where('tag_id', '=', $request->tag_id);
                 }
             })
             ->paginate(15);
 
         $rows = [];
-        foreach ($products as $k => $v){
-            $rows[]= [
+        foreach ($products as $k => $v) {
+            $rows[] = [
                 'id' => $v->id,
                 'title' => $v->title,
                 'thumbnail' => $v->thumbnail,
@@ -53,11 +53,10 @@ class ProductController extends ApiController
         }
 
         $data = [
-            'currentPage' => $products->currentPage(),
-            'perPage' => $products->perPage(),
+            'page' => $products->currentPage(),
+            'take' => $products->perPage(),
             'total' => $products->total(),
-            'lastPage' => $products->lastPage(),
-            'rows' => $rows
+            'rows' => $rows,
         ];
 
         return $this->apiResponse('请求成功！', Code::R_OK, $data);
@@ -76,7 +75,7 @@ class ProductController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -87,7 +86,7 @@ class ProductController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -98,7 +97,7 @@ class ProductController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -109,8 +108,8 @@ class ProductController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -119,13 +118,14 @@ class ProductController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除商品
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        Product::where('id', $id)->delete();
+        return $this->apiResponse("删除成功", Code::R_OK);
     }
 }

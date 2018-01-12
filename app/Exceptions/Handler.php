@@ -54,9 +54,12 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($request->is('api/*')) {
+            // 如果是api请求
             if ($exception instanceof ModelNotFoundException) {
+                // 如果请求的资源不存在
                 return Handle::exception($exception, 404);
             } elseif ($exception instanceof AuthenticationException) {
+                // 如果没有权限
                 return Handle::exception($exception, 401);
             } else {
                 return Handle::exception($exception);

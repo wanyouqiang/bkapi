@@ -48,12 +48,17 @@ class ArticleController extends ApiController
             'rows' => [],
         ];
 
+
         foreach ($articles as $article) {
+            $previewToken = md5((config('flybaby.preview_salt') . $article->id));
+
             $data['rows'][] = [
                 'article_id' => $article->id,
                 'title' => $article->title,
                 'category' => $article->articleCate->title,
                 'article_url' => sprintf(config('flybaby.article_url_tpl'), $article->id),
+                'preview_url' => $previewToken,
+                'preview_url' => sprintf(config('flybaby.article_url_tpl'), $article->id) . '?pt=' . $previewToken,
                 'thumbnail' => $article->thumbnail,
                 'fake_views' => $article->fake_views,
                 'real_views' => $article->real_views,
@@ -82,9 +87,25 @@ class ArticleController extends ApiController
         return $this->apiResponse('请求成功！', Code::R_OK, $data);
     }
 
-    public function edit()
+    public function update(Request $request)
     {
+        $articleId = $request->input('article_id');
+        $title = $request->input('title');
+        $sub_title = $request->input('sub_title');
+        $body = $request->input('body');
+        $published_at = $request->input('published_at');
+        $thumbnail = $request->input('thumbnail');
 
+        $article = Article::find($articleId);
+        $article->title = $title;
+        $article->sub_title = $sub_title;
+        $article->body = $body;
+        $article->thumbnail = $thumbnail;
+        $article->published_at = $published_at;
+
+        $article->save();
+
+        return $this->apiResponse('修改成功！', Code::R_OK, []);
     }
 
     public function delete($articleId)

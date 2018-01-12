@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ArticleTagController extends ApiController
 {
-    public function getAll(Request $request)
+    public function index(Request $request)
     {
         $category_id = $request->input('category_id');
         if (isset($category_id)) {

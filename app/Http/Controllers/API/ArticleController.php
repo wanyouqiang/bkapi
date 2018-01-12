@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class ArticleController extends ApiController
 {
     const PER_PAGE = 4;
-    public function getAll(Request $request)
+    public function index(Request $request)
     {
         $category_id = $request->input('category_id');
         $tag_id = $request->input('tag_id');
@@ -61,5 +61,12 @@ class ArticleController extends ApiController
         }
 
         return $this->apiResponse('ok', Code::R_OK, $data);
+    }
+
+    public function delete($articleId)
+    {
+        Article::destroy($articleId);
+
+        return $this->apiResponse('删除成功', Code::R_OK, []);
     }
 }

@@ -31,6 +31,7 @@ Route::get('article/cates', 'ArticleCateController@index');
 Route::get('article/tags', 'ArticleTagController@index');
 Route::get('article/articles', 'ArticleController@index');
 Route::delete('article/articles/{articleId}', 'ArticleController@delete');
+Route::get('article/articles/{articleId}', 'ArticleController@show');
 
 //通用
 $router->get('qiniu/auth', 'QiNiuController@auth');

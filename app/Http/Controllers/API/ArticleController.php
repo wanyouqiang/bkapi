@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 class ArticleController extends ApiController
 {
     const PER_PAGE = 15;
+
     public function index(Request $request)
     {
         $category_id = $request->input('category_id');
@@ -61,6 +62,29 @@ class ArticleController extends ApiController
         }
 
         return $this->apiResponse('ok', Code::R_OK, $data);
+    }
+
+    public function show($articleId)
+    {
+        $article = Article::with('articleCate')->findOrFail($articleId);
+
+        $data = [
+            'id' => $article->id,
+            'category' => $article->articleCate->title,
+            'tag' => $article->articleCate->articleTags->pluck('tag')->toArray() ?? '',
+            'thumbnail' => $article->thumbnail,
+            'title' => $article->title,
+            'sub_title' => $article->sub_title,
+            'body' => $article->body,
+            'published_at' => $article->published_at
+        ];
+
+        return $this->apiResponse('请求成功！', Code::R_OK, $data);
+    }
+
+    public function edit()
+    {
+
     }
 
     public function delete($articleId)

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends ApiController
 {
-    const PER_PAGE = 4;
+    const PER_PAGE = 15;
     public function index(Request $request)
     {
         $category_id = $request->input('category_id');
